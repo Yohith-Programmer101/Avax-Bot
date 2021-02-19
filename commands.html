@@ -45,6 +45,37 @@
             </div>
         </div>
         <br>
+        <div class="color-box">
+            <h3>COMMAND PREFIX</h3>
+            <hr color="white" style="height: 3px; border-radius: 5px;">
+            <p>Prefix: <code>!</code><br>Example: <code>!help</code></p>
+            <br>
+            <h3>COMMAND USAGE SYNTAX</h3>
+            <hr color="white" style="height: 3px; border-radius: 5px;">
+            <p><code>[]</code> - Optional parameter. <br>
+                <code>{}</code> - Required parameter. <br>
+                <code>()</code> - Default value.
+            </p>
+            <p>(Don't include these while typing the commands.)</p>
+        </div>
+
+        <style>
+            code {
+                color: black;
+                background-color: lightgrey;
+                border-radius: 2px;
+                padding: 2px;
+            }
+
+            .color-box {
+                color: white;
+                background-color: grey;
+                padding: 10px;
+                margin: 10px;
+                border-radius: 5px;
+                overflow-x: scroll;
+            }
+        </style>
 
         <script>
             function expandNav() {
