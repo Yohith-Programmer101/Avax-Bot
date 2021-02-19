@@ -16,7 +16,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background: none;
+    background: grey;
     border-radius: 100px;
     border: 2px solid transparent;
     background-clip: padding-box;
@@ -64,4 +64,13 @@ ul {
     background-color: white;
     color: black;
     text-decoration: none;
+}
+
+#moblinks>a {
+    width: 100%;
+    text-align: left;
+}
+
+#mobnav>.scrollmenu>a:hover {
+    background: #07ccf0;
 }

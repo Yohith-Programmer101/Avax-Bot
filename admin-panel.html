@@ -10,6 +10,8 @@
             href="https://cdn.discordapp.com/attachments/781847301241044992/805694352935485440/download_12.jpeg"
             type="image/x-icon">
         <link rel="stylesheet" href="navstyle.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+            integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -17,16 +19,32 @@
     </head>
 
     <body>
-        <div class="scrollmenu">
-            <a href="index.html">Home</a>
-            <a href="commands.html">Commands</a>
-            <a href="contact.html">Contact</a>
-            <a href="https://discord.gg/HK7XuSNc2T">Support</a>
-            <a href="https://discord.com/login">Login</a>
-            <a href="admin-panel.html" class="active">Admin Panel</a>
+        <div id="navbar">
+            <div class="scrollmenu">
+                <a href="index.html">Home</a>
+                <a href="commands.html">Commands</a>
+                <a href="contact.html">Contact</a>
+                <a href="https://discord.gg/HK7XuSNc2T">Support</a>
+                <a href="https://discord.com/login">Login</a>
+                <a href="admin-panel.html" class="active">Admin Panel</a>
+            </div>
+        </div>
+        <div id="mobnav">
+            <div class="scrollmenu">
+                <a href="admin-panel.html">Admin Panel</a>
+                <button
+                    style="width: 50px; height: 50px; background: transparent; border: none; outline: none; right: 0px; position: absolute;"
+                    onclick="expandNav()"><i class="fas fa-bars"></i></button>
+                <div id="moblinks" style="display: none;">
+                    <a href="index.html">Home</a>
+                    <a href="commands.html">Commands</a><br>
+                    <a href="contact.html">Contact</a><br>
+                    <a href="https://discord.gg/HK7XuSNc2T">Support</a><br>
+                    <a href="https://discord.com/login">Login</a><br>
+                </div>
+            </div>
         </div>
         <br>
-
         <div style="float: right;">
             <button style="right: 10px; padding: 10px; margin: 10px; display: none;" class="btn btn-danger" id="logout"
                 onclick="logout()">Logout</button>
@@ -86,13 +104,11 @@
             }
 
             function checkCookie() {
-                var html = `<div id="form" class="list-group">
-                                <div class="list-group-item" style="background-color: #07ccf0;">
-                                    <h3 style="margin: auto; text-align: center;">Welcome</h3>
-                                </div>
-                                <div class="list-group-item">
-                                    <button class="btn btn-primary">Test</button>
-                                </div>
+                var html = `<div class="list-group-item" style="background-color: #07ccf0;">
+                                <h3 style="margin: auto; text-align: center;">Welcome</h3>
+                            </div>
+                            <div class="list-group-item">
+                                <button class="btn btn-primary">Test</button>
                             </div>`;
                 if (getCookie("username")) {
                     $("#logout").show()
@@ -104,7 +120,7 @@
                 if (($("#user_name").val() === user_name) && ($("#password").val() === password)) {
                     console.log($("#user_name").val());
                     console.log($("#password").val())
-                    document.cookie = "username=Dremix Bot Dev; path=/;";
+                    document.cookie = "username=Dremix Bot Dev; expires=Thu, 18 Dec 2030 12:00:00 UTC; path=/;";
                 }
                 else {
                     $("#user_name").css("border", "2px solid red")
@@ -128,6 +144,34 @@
                 }
                 return false;
             }
+
+            function expandNav() {
+                $("#moblinks").toggle();
+            }
+
+            function mediaScreen(x) {
+                if (x.matches) {
+                    $("#navbar").hide();
+                    $("#mobnav").show();
+                } else {
+                    $("#navbar").show();
+                    $("#mobnav").hide();
+                }
+            }
+            var x = window.matchMedia("(max-width: 600px)")
+            mediaScreen(x)
+            x.addListener(mediaScreen)
+
+            function mediaPanel(x) {
+                if (x.matches) {
+                    $("#form").css("width", "100%")
+                } else {
+                    $("#form").css("width", "500px")
+                }
+            }
+            var x = window.matchMedia("(max-width: 530px)");
+            mediaPanel(x);
+            x.addListener(mediaPanel);
         </script>
     </body>
 

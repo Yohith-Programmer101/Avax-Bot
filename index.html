@@ -10,6 +10,8 @@
             href="https://cdn.discordapp.com/attachments/781847301241044992/805694352935485440/download_12.jpeg"
             type="image/x-icon">
         <link rel="stylesheet" href="navstyle.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+            integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -17,51 +19,90 @@
     </head>
 
     <body>
-        <div class="scrollmenu">
-            <a href="index.html" class="active">Home</a>
-            <a href="commands.html">Commands</a>
-            <a href="contact.html">Contact</a>
-            <a href="https://discord.gg/HK7XuSNc2T">Support</a>
-            <a href="https://discord.com/login">Login</a>
-            <a href="admin-panel.html">Admin Panel</a>
+        <div id="navbar">
+            <div class="scrollmenu">
+                <a href="index.html" class="active">Home</a>
+                <a href="commands.html">Commands</a>
+                <a href="contact.html">Contact</a>
+                <a href="https://discord.gg/HK7XuSNc2T">Support</a>
+                <a href="https://discord.com/login">Login</a>
+                <a href="admin-panel.html">Admin Panel</a>
+            </div>
+        </div>
+        <div id="mobnav">
+            <div class="scrollmenu">
+                <a href="index.html">Home</a>
+                <button
+                    style="width: 50px; height: 50px; background: transparent; border: none; outline: none; right: 0px; position: absolute;"
+                    onclick="expandNav()"><i class="fas fa-bars"></i></button>
+                <div id="moblinks" style="display: none;">
+                    <a href="commands.html">Commands</a><br>
+                    <a href="contact.html">Contact</a><br>
+                    <a href="https://discord.gg/HK7XuSNc2T">Support</a><br>
+                    <a href="https://discord.com/login">Login</a><br>
+                    <a href="admin-panel.html">Admin Panel</a>
+                </div>
+            </div>
         </div>
         <br>
-        <table>
-            <tr>
-                <td>
-                    <div>
-                        <img
-                            src="https://cdn.discordapp.com/attachments/781847301241044992/805694352935485440/download_12.jpeg">
-                    </div>
-                </td>
-                <td>
-                    <div class="container-fluid"
-                        style="background-color: lightgrey; padding: 10px; margin: 10px; border-radius: 5px;">
-                        <h2>Avax Bot</h2>
-                        <h4>Discord.py</h4>
-                        <h5>Prefix: !</h5><br>
-                        <h5>@av!</h5>
-                        <p>A cool bot which helps you to communicate with other members, staffs etc, It also helps
-                            you to make new friends.</p>
-                        <button
-                            onclick="window.location.replace('https://discord.com/api/oauth2/authorize?client_id=769090803234504755&permissions=8&redirect_uri=http%3A%2F%2F127.0.0.1%3A5000%2Flogin&scope=bot')"
-                            class="btn btn-primary btn-lg" style="outline: none; border: none;">Invite</button>
-                        <button class="btn btn-primary btn-lg" style="cursor: not-allowed;" disabled>Vote</button>
-                    </div>
-                </td>
-            </tr>
-        </table>
+
+        <div style="display: flex; text-align: center; justify-content: center;">
+            <img src="https://cdn.discordapp.com/attachments/781847301241044992/805694352935485440/download_12.jpeg">
+        </div>
+
+        <div style="background-color: lightgrey; padding: 10px; margin: 10px; border-radius: 5px;">
+            <h2>Avax Bot</h2>
+            <h4>Discord.py</h4>
+            <h5>Prefix: !</h5><br>
+            <h5>@av!</h5>
+            <p>A cool bot which helps you to communicate with other members, staffs etc, It also helps
+                you to make new friends.</p>
+            <button
+                onclick="window.location.replace('https://discord.com/api/oauth2/authorize?client_id=769090803234504755&permissions=8&redirect_uri=http%3A%2F%2F127.0.0.1%3A5000%2Flogin&scope=bot')"
+                class="btn btn-primary btn-lg" style="outline: none; border: none;">Invite</button>
+            <button class="btn btn-primary btn-lg" style="cursor: not-allowed;" disabled>Vote</button>
+        </div>
 
 
         <style>
             img {
-                width: 510px;
-                height: 510px;
+                width: 400px;
+                height: 400px;
                 border-radius: 5px;
-                margin: 10px;
-                margin-left: 10px;
+                margin: auto;
             }
         </style>
+
+        <script>
+            function expandNav() {
+                $("#moblinks").toggle();
+            }
+
+            function mediaScreen(x) {
+                if (x.matches) {
+                    $("#navbar").hide();
+                    $("#mobnav").show();
+                } else {
+                    $("#navbar").show();
+                    $("#mobnav").hide();
+                }
+            }
+            var x = window.matchMedia("(max-width: 600px)")
+            mediaScreen(x)
+            x.addListener(mediaScreen)
+
+            function mediaScreenImage(x) {
+                if (x.matches) {
+                    $("img").css({ "width": "300px", "height": "300px" })
+                } else {
+                    $("img").css({ "width": "400px", "height": "400px" })
+                }
+            }
+            var x = window.matchMedia("(max-width: 410px)");
+            mediaScreenImage(x);
+            x.addListener(mediaScreenImage);
+
+        </script>
     </body>
 
 </html>
