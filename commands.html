@@ -156,16 +156,16 @@
                 $("#searchbox").val("");
                 $.getJSON("./commands.json", function (data) {
                     for (let i = 0; i < data["fun"].length; i++) {
-                        html += "<p class='command'><code>" + data["fun"][i][0] + "</code>" + data["fun"][i][1] + "</p>"
+                        html += "<p class='command'><code>" + data["fun"][i][0] + "</code> - " + data["fun"][i][1] + "</p>"
                     }
                     for (let i = 0; i < data["moderation"].length; i++) {
-                        html += "<p class='command'><code>" + data["moderation"][i][0] + "</code>" + data["moderation"][i][1] + "</p>"
+                        html += "<p class='command'><code>" + data["moderation"][i][0] + "</code> - " + data["moderation"][i][1] + "</p>"
                     }
                     for (let i = 0; i < data["economy"].length; i++) {
-                        html += "<p class='command'><code>" + data["economy"][i][0] + "</code>" + data["economy"][i][1] + "</p>"
+                        html += "<p class='command'><code>" + data["economy"][i][0] + "</code> - " + data["economy"][i][1] + "</p>"
                     }
                     for (let i = 0; i < data["information"].length; i++) {
-                        html += "<p class='command'><code>" + data["information"][i][0] + "</code>" + data["information"][i][1] + "</p>"
+                        html += "<p class='command'><code>" + data["information"][i][0] + "</code> - " + data["information"][i][1] + "</p>"
                     }
                     document.getElementById("commands").innerHTML = html;
                 })
@@ -178,7 +178,7 @@
                 $("#searchbox").val("");
                 $.getJSON("./commands.json", function (data) {
                     for (let i = 0; i < data["fun"].length; i++) {
-                        html += "<p class='command'><code>" + data["fun"][i][0] + "</code>" + data["fun"][i][1] + "</p>"
+                        html += "<p class='command'><code>" + data["fun"][i][0] + "</code> - " + data["fun"][i][1] + "</p>"
                     }
                     document.getElementById("commands").innerHTML = html;
                 })
@@ -191,7 +191,7 @@
                 $("#searchbox").val("");
                 $.getJSON("./commands.json", function (data) {
                     for (let i = 0; i < data["moderation"].length; i++) {
-                        html += "<p class='command'><code>" + data["moderation"][i][0] + "</code>" + data["moderation"][i][1] + "</p>"
+                        html += "<p class='command'><code>" + data["moderation"][i][0] + "</code> - " + data["moderation"][i][1] + "</p>"
                     }
                     document.getElementById("commands").innerHTML = html;
                 })
@@ -204,7 +204,7 @@
                 $("#searchbox").val("");
                 $.getJSON("./commands.json", function (data) {
                     for (let i = 0; i < data["economy"].length; i++) {
-                        html += "<p class='command'><code>" + data["economy"][i][0] + "</code>" + data["economy"][i][1] + "</p>"
+                        html += "<p class='command'><code>" + data["economy"][i][0] + "</code> - " + data["economy"][i][1] + "</p>"
                     }
                     document.getElementById("commands").innerHTML = html;
                 })
@@ -217,7 +217,7 @@
                 $("#searchbox").val("");
                 $.getJSON("./commands.json", function (data) {
                     for (let i = 0; i < data["information"].length; i++) {
-                        html += "<p class='command'><code>" + data["information"][i][0] + "</code>" + data["information"][i][1] + "</p>"
+                        html += "<p class='command'><code>" + data["information"][i][0] + "</code> - " + data["information"][i][1] + "</p>"
                     }
                     document.getElementById("commands").innerHTML = html;
                 })
