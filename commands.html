@@ -6,6 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Commands</title>
+        <meta name="description" content="This is the commands page for the bot.">
         <link rel="shortcut icon"
             href="https://cdn.discordapp.com/attachments/781847301241044992/805694352935485440/download_12.jpeg"
             type="image/x-icon">
@@ -44,11 +45,11 @@
                 </div>
             </div>
         </div>
-        <br>
+        <br><br><br>
         <div class="color-box">
             <h3>COMMAND PREFIX</h3>
             <hr color="white" style="height: 3px; border-radius: 5px;">
-            <p>Prefix: <code>!</code><br>Example: <code>!help</code></p>
+            <p>Prefix: <code>av!</code><br>Example: <code>av!help</code></p>
             <br>
             <h3>COMMAND USAGE SYNTAX</h3>
             <hr color="white" style="height: 3px; border-radius: 5px;">
@@ -58,8 +59,59 @@
             </p>
             <p>(Don't include these while typing the commands.)</p>
         </div>
+        <br>
+        <div class="color-box">
+            <h3>COMMANDS<input type="text" name="searchbox" placeholder="Search..." id="searchbox"></h3>
+            <hr color="white" style="height: 3px; border-radius: 5px;">
+            <div class="row" style="width: 1300px;">
+                <div class="col-1" style="margin-right: 30px;">
+                    <button id="all" class="btn" onclick="allCommands()">All</button><br>
+                    <button id="fun" class="btn" onclick="funCommands()">Fun</button><br>
+                    <button id="mod" class="btn" onclick="modCommands()">Moderation</button><br>
+                    <button id="eco" class="btn" onclick="ecoCommands()">Economy</button><br>
+                    <button id="info" class="btn" onclick="infoCommands()">Information</button><br>
+                </div>
+                <div class="col-2" style="border-left: 2px solid white; padding-left: 10px;" id="commands">
+
+                </div>
+            </div>
+        </div>
 
         <style>
+            @media only screen and (max-width: 700px) {
+                #searchbox {
+                    display: none;
+                }
+            }
+
+            #searchbox {
+                position: absolute;
+                right: 30px;
+                width: 300px;
+                height: 30px;
+                font-size: 20px;
+                border-radius: 5px;
+                border: none;
+            }
+
+            #searchbox:focus {
+                outline: none !important;
+                border: none !important;
+                -webkit-box-shadow: none !important;
+                box-shadow: none !important;
+            }
+
+            .btn {
+                background-color: lightgrey;
+                padding: 5px;
+                margin: 5px;
+                width: 100px
+            }
+
+            .act {
+                background-color: #07ccf0;
+            }
+
             code {
                 color: black;
                 background-color: lightgrey;
@@ -78,6 +130,99 @@
         </style>
 
         <script>
+            var html = ""
+
+            allCommands();
+
+            $("#searchbox").on("input", function () {
+                var value = $(this).val().toLowerCase();
+                $(".command").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+
+            function removeActColor() {
+                $("#all").removeClass("act");
+                $("#fun").removeClass("act");
+                $("#mod").removeClass("act");
+                $("#eco").removeClass("act");
+                $("#info").removeClass("act");
+            }
+
+            function allCommands() {
+                html = "";
+                removeActColor()
+                $("#all").addClass("act");
+                $("#searchbox").val("");
+                $.getJSON("./commands.json", function (data) {
+                    for (let i = 0; i < data["fun"].length; i++) {
+                        html += "<p class='command'><code>" + data["fun"][i][0] + "</code>" + data["fun"][i][1] + "</p>"
+                    }
+                    for (let i = 0; i < data["moderation"].length; i++) {
+                        html += "<p class='command'><code>" + data["moderation"][i][0] + "</code>" + data["moderation"][i][1] + "</p>"
+                    }
+                    for (let i = 0; i < data["economy"].length; i++) {
+                        html += "<p class='command'><code>" + data["economy"][i][0] + "</code>" + data["economy"][i][1] + "</p>"
+                    }
+                    for (let i = 0; i < data["information"].length; i++) {
+                        html += "<p class='command'><code>" + data["information"][i][0] + "</code>" + data["information"][i][1] + "</p>"
+                    }
+                    document.getElementById("commands").innerHTML = html;
+                })
+            }
+
+            function funCommands() {
+                html = "";
+                removeActColor()
+                $("#fun").addClass("act");
+                $("#searchbox").val("");
+                $.getJSON("./commands.json", function (data) {
+                    for (let i = 0; i < data["fun"].length; i++) {
+                        html += "<p class='command'><code>" + data["fun"][i][0] + "</code>" + data["fun"][i][1] + "</p>"
+                    }
+                    document.getElementById("commands").innerHTML = html;
+                })
+            }
+
+            function modCommands() {
+                html = "";
+                removeActColor()
+                $("#mod").addClass("act");
+                $("#searchbox").val("");
+                $.getJSON("./commands.json", function (data) {
+                    for (let i = 0; i < data["moderation"].length; i++) {
+                        html += "<p class='command'><code>" + data["moderation"][i][0] + "</code>" + data["moderation"][i][1] + "</p>"
+                    }
+                    document.getElementById("commands").innerHTML = html;
+                })
+            }
+
+            function ecoCommands() {
+                html = "";
+                removeActColor()
+                $("#eco").addClass("act");
+                $("#searchbox").val("");
+                $.getJSON("./commands.json", function (data) {
+                    for (let i = 0; i < data["economy"].length; i++) {
+                        html += "<p class='command'><code>" + data["economy"][i][0] + "</code>" + data["economy"][i][1] + "</p>"
+                    }
+                    document.getElementById("commands").innerHTML = html;
+                })
+            }
+
+            function infoCommands() {
+                html = "";
+                removeActColor()
+                $("#info").addClass("act");
+                $("#searchbox").val("");
+                $.getJSON("./commands.json", function (data) {
+                    for (let i = 0; i < data["information"].length; i++) {
+                        html += "<p class='command'><code>" + data["information"][i][0] + "</code>" + data["information"][i][1] + "</p>"
+                    }
+                    document.getElementById("commands").innerHTML = html;
+                })
+            }
+
             function expandNav() {
                 $("#moblinks").toggle();
             }
