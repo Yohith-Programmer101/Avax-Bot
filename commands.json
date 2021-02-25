@@ -1,82 +1,86 @@
 {
     "fun": [
         [
-            "av!howsmart",
-            ""
+            "av!howsmart[@user]",
+            "A fun command, that has nothing to do with reality, just displays your smart percentage, a random number between 1 and 100. Returns the smartness of the user if given."
         ],
         [
-            "av!howgay",
-            ""
+            "av!howgay[@user]",
+            "A fun command, that has nothing to do with reality, just displays your gayness, a random number between 1 and 100. Returns the gayness of the user if given."
         ],
         [
             "av!joke",
-            ""
+            "Displays a random joke. "
         ],
         [
-            "av!avatar",
-            ""
+            "av!avatar[@user]",
+            "Displays the user's avatar if given or your own in GIF format."
         ],
         [
-            "av!8ball",
-            ""
+            "av!8ball{question}",
+            "Displays a random response to your question."
         ],
         [
             "av!cat",
-            ""
+            "Displays a random cat image."
         ],
         [
             "av!meme",
-            ""
+            "Displays a random meme from reddits and sub reddits."
         ],
         [
             "av!dog",
-            ""
+            "Displays a random dog image."
         ],
         [
-            "av!poll",
-            ""
+            "av!poll{question}",
+            "Creates a poll for your question."
         ]
     ],
     "moderation": [
         [
-            "av!mute",
-            ""
+            "av!mute{@user}",
+            "Mutes a user. You need the manage messages permission to use this command."
         ],
         [
-            "av!ban",
-            ""
+            "av!ban{@user}",
+            "Bans a user. Requires ban members permission."
         ],
         [
-            "av!unban",
-            ""
+            "av!unban{@user}",
+            "Unbans a user. Requires ban members permission."
         ],
         [
-            "av!unmute",
-            ""
+            "av!unmute{@user}",
+            "Unmutes a user. You need the manage messages permission to use this command."
+        ],
+        [
+            "av!kick{@user}",
+            "Kicks a user. Requires kick members permission."
         ]
     ],
     "economy": [
         [
-            "av!bal",
-            ""
+            "av!bal[@user]",
+            "Returns the total money the user has if given or it returns yours."
         ],
         [
             "av!beg",
-            ""
+            "You will get a random amount of money."
         ]
     ],
     "information": [
         [
             "av!invite",
-            ""
+            "It returns the invite link for the bot."
         ],
         [
             "av!ping",
-            ""
+            "It return the latency of the bot."
         ],
         [
             "av!version",
-            ""
+            "Returns the current version of the bot."
         ]
     ]
 }
